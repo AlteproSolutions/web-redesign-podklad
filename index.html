@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
     <title>Redesign webu ALTEPRO — Interní podklad</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -491,22 +492,84 @@
                                 </ul>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-altepro-dark mb-2">SEO</h4>
+                                <h4 class="font-semibold text-altepro-dark mb-2">SEO & Struktura</h4>
                                 <ul class="space-y-1 text-altepro-gray">
-                                    <li>„Řešení" a „Služby" se překrývají</li>
                                     <li>Plochá URL struktura, žádné Topic Clusters</li>
+                                    <li>Reference bez kategorizace a case study formátu</li>
                                     <li>Špatná dohledatelnost long-tail dotazů</li>
                                     <li>Zbytečné PPC výdaje</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="mt-4 pt-4 border-t border-gray-100">
+                            <h4 class="font-semibold text-altepro-dark mb-2">Konkrétní nedostatky z detailního auditu</h4>
+                            <div class="grid sm:grid-cols-2 gap-3 text-xs mb-4">
+                                <div class="bg-red-50 border border-red-100 rounded-lg p-3">
+                                    <strong class="text-red-800">Žádné CTA na celém webu</strong>
+                                    <p class="text-red-700 mt-1">Chybí tlačítka „Domluvte konzultaci", „Objednat demo". Stránka Řešení nemá jediné call-to-action. Návštěvník neví, co má dělat dál.</p>
+                                </div>
+                                <div class="bg-red-50 border border-red-100 rounded-lg p-3">
+                                    <strong class="text-red-800">Nejsilnější obsah je schovaný daleko dole</strong>
+                                    <p class="text-red-700 mt-1">Hero má slušný základ (od 2014, certifikace, CTA). Ale sekce „V čem jsme jiní" — kde je reálná diferenciace — je až na 4. scrollu. Většina návštěvníků tam nedojde.</p>
+                                </div>
+                                <div class="bg-red-50 border border-red-100 rounded-lg p-3">
+                                    <strong class="text-red-800">Reference bez důkazů</strong>
+                                    <p class="text-red-700 mt-1">Headline slibuje „Co o nás říkají naši klienti?" — ale žádné citace klientů tam nejsou. Jen loga + technický popis dodávky. Žádná čísla, výsledky, case studies.</p>
+                                </div>
+                                <div class="bg-red-50 border border-red-100 rounded-lg p-3">
+                                    <strong class="text-red-800">Řešení = katalog, ne prodejní nástroj</strong>
+                                    <p class="text-red-700 mt-1">Seznam technologií (LAN, WiFi, Firewall...) bez business value. Zákazník nevidí, co tím získá. Žádná čísla — kolik projektů? Jak rychle? Jaké SLA?</p>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-lg p-3">
+                                    <strong class="text-amber-800">Accessibility a technické problémy</strong>
+                                    <p class="text-amber-700 mt-1">Chybějící alt texty u obrázků/ikon, chaotická heading struktura (H1→H2 skoky), agresivní prefetch script na mobilu.</p>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-lg p-3">
+                                    <strong class="text-amber-800">Žádná čísla nikde na webu</strong>
+                                    <p class="text-amber-700 mt-1">Kolik projektů realizováno? Kolik let na trhu? Kolik inženýrů v týmu? Jaké SLA? Zákazník nemá důvod věřit obecným tvrzením.</p>
+                                </div>
+                            </div>
+                            <h4 class="font-semibold text-altepro-dark mb-2">Detailní audit po sekcích</h4>
+                            <div class="grid sm:grid-cols-2 gap-3 text-xs mb-4">
+                                <div class="bg-green-50 border border-green-100 rounded-lg p-3">
+                                    <strong class="text-green-800">Konzultace — nejlepší podstránka</strong>
+                                    <p class="text-green-700 mt-1">Jasný úvod („Nejsme prodejci krabic"), konkrétní seznam 12 služeb, kontaktní formulář. Tohle funguje.</p>
+                                </div>
+                                <div class="bg-green-50 border border-green-100 rounded-lg p-3">
+                                    <strong class="text-green-800">Tým — silný prvek důvěry</strong>
+                                    <p class="text-green-700 mt-1">12 lidí s fotkami a pozicemi, vedení + specialisté. Reálné tváře budují důvěru.</p>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-lg p-3">
+                                    <strong class="text-amber-800">Žádný blog / content marketing</strong>
+                                    <p class="text-amber-700 mt-1">Web nemá sekci pro články, novinky ani whitepapers. Chybí příležitost budovat expertní pozici a generovat organický traffic.</p>
+                                </div>
+                                <div class="bg-red-50 border border-red-100 rounded-lg p-3">
+                                    <strong class="text-red-800">Kompetenční centrum Huatech — zastaralé</strong>
+                                    <p class="text-red-700 mt-1">Zmiňuje produkty, které Huawei přejmenoval nebo ukončil (FusionSphere, Tecal, eSight). Podkopává důvěryhodnost.</p>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-lg p-3">
+                                    <strong class="text-amber-800">Technologie — nerovnoměrné</strong>
+                                    <p class="text-amber-700 mt-1">25 vendorů, ale u 9 z nich chybí jakýkoliv popis (Brocade, Panduit, Radware, Rittal, Ruckus, Runecast, Siemon, Veeam, Zabbix). Působí nedodělaně.</p>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-lg p-3">
+                                    <strong class="text-amber-800">Školení — jen Huawei</strong>
+                                    <p class="text-amber-700 mt-1">Stránka zmiňuje pouze Huawei certifikace, přestože ALTEPRO školí i Arista, Palo Alto, Fortinet a další. Neodráží skutečnou šíři nabídky.</p>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-lg p-3">
+                                    <strong class="text-amber-800">Servis a podpora — strohé</strong>
+                                    <p class="text-amber-700 mt-1">Jen 3 odrážky a odkaz na support portál. Žádné SLA, reakční doby, modely podpory. Zákazník neví, co přesně dostane.</p>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-lg p-3">
+                                    <strong class="text-amber-800">Tým — chybí technici</strong>
+                                    <p class="text-amber-700 mt-1">Zobrazeno vedení + sales/marketing/finance. Z 12 TSD inženýrů jsou vidět jen 2 (Radim, Jarda). Zákazník nevidí technickou sílu firmy.</p>
+                                </div>
+                            </div>
                             <h4 class="font-semibold text-altepro-dark mb-2">Doporučení z auditu</h4>
                             <div class="grid sm:grid-cols-5 gap-2 text-xs">
                                 <div class="bg-red-100 text-red-800 rounded-lg p-2 text-center"><strong>Homepage</strong><br>Přepsat</div>
                                 <div class="bg-blue-100 text-blue-800 rounded-lg p-2 text-center"><strong>Reference</strong><br>Expandovat na Case Study</div>
                                 <div class="bg-purple-100 text-purple-800 rounded-lg p-2 text-center"><strong>Konzultace</strong><br>Sloučit s produkty</div>
-                                <div class="bg-amber-100 text-amber-800 rounded-lg p-2 text-center"><strong>Blog</strong><br>Restart nebo skrýt</div>
+                                <div class="bg-amber-100 text-amber-800 rounded-lg p-2 text-center"><strong>Content</strong><br>Zavést blog / whitepapers</div>
                                 <div class="bg-green-100 text-green-800 rounded-lg p-2 text-center"><strong>O nás / Tým</strong><br>Zachovat</div>
                             </div>
                         </div>
@@ -610,26 +673,29 @@
                     </summary>
                     <div class="px-6 pb-6 border-t border-gray-100 pt-4">
                         <div class="bg-purple-50 rounded-lg p-4 mb-4">
-                            <p class="text-purple-800 text-sm font-medium">Hlavní problém: Kategorie „Řešení" a „Služby" se překrývají. URL struktura je plochá. Reference jsou pod /word/ (nestandardní).</p>
+                            <p class="text-purple-800 text-sm font-medium">Struktura webu je logická, ale orientovaná na produkt/proces — ne na zákazníka. Reference (40+ klientů) jsou bez kategorizace a case study formátu.</p>
                         </div>
                         <div class="font-mono text-xs text-altepro-gray space-y-1 bg-gray-50 rounded-lg p-4">
                             <div class="text-altepro-dark font-semibold">altepro.cz/</div>
-                            <div class="ml-4">├── <span class="text-blue-600">/sluzby/</span> Služby</div>
-                            <div class="ml-8">├── /co-delame/ — Co děláme</div>
-                            <div class="ml-8">├── /implementace-it-reseni/</div>
-                            <div class="ml-8">└── /konzultace-it-reseni/</div>
-                            <div class="ml-4">├── <span class="text-blue-600">/reseni/</span> Řešení <span class="text-red-500 text-xs">(překryv se Službami)</span></div>
-                            <div class="ml-8">├── /networking/</div>
-                            <div class="ml-8">├── /it/ — Compute & Storage</div>
-                            <div class="ml-8">└── /datova-centra/</div>
-                            <div class="ml-4">├── <span class="text-blue-600">/technologie/</span> Technologie</div>
-                            <div class="ml-4">├── <span class="text-blue-600">/o-nas/</span> O nás <span class="text-green-500 text-xs">(nejsilnější prvek)</span></div>
+                            <div class="ml-4">├── <span class="text-blue-600">/reseni/</span> Řešení <span class="text-gray-400 text-xs">(CO — technologické kategorie)</span></div>
+                            <div class="ml-8">├── #networking — Networking</div>
+                            <div class="ml-8">├── #security — Security</div>
+                            <div class="ml-8">├── #it — IT (Compute & Storage)</div>
+                            <div class="ml-8">└── #non-it — Non IT (DC, UPS, klima, EZS)</div>
+                            <div class="ml-4">├── <span class="text-blue-600">/sluzby/</span> Služby / Co děláme <span class="text-gray-400 text-xs">(JAK — proces spolupráce)</span></div>
+                            <div class="ml-8">├── Konzultace IT řešení</div>
+                            <div class="ml-8">├── Implementace</div>
+                            <div class="ml-8">├── Servis a podpora</div>
+                            <div class="ml-8">├── Financování</div>
+                            <div class="ml-8">├── Školení a workshopy</div>
+                            <div class="ml-8">└── DEMO lab</div>
+                            <div class="ml-4">├── <span class="text-blue-600">/technologie/</span> Technologie <span class="text-amber-500 text-xs">(25 vendorů, 9 bez popisu)</span></div>
+                            <div class="ml-4">├── <span class="text-blue-600">/o-nas/</span> O nás <span class="text-green-500 text-xs">(nejsilnější prvek — fotky týmu)</span></div>
                             <div class="ml-8">├── /tym/</div>
+                            <div class="ml-8">├── /reference/ <span class="text-amber-500 text-xs">(40+ klientů, bez case studies)</span></div>
                             <div class="ml-8">└── /kontakt/</div>
-                            <div class="ml-4">├── <span class="text-blue-600">/kompetencni-centrum-huatech/</span></div>
-                            <div class="ml-4">├── <span class="text-blue-600">/word/</span> Reference <span class="text-red-500 text-xs">(nestandardní URL)</span></div>
-                            <div class="ml-4">├── <span class="text-blue-600">/stitek/</span> Blog / Štítky</div>
-                            <div class="ml-4">└── <span class="text-blue-600">/en/</span> Anglická verze</div>
+                            <div class="ml-4">├── <span class="text-blue-600">/kompetencni-centrum-huatech/</span> <span class="text-amber-500 text-xs">(zastaralé produkty)</span></div>
+                            <div class="ml-4">└── <span class="text-blue-600">/en/</span> → altepro.com <span class="text-gray-400 text-xs">(redirect)</span></div>
                         </div>
                     </div>
                 </details>
@@ -684,6 +750,18 @@
                         <div class="bg-cyan-50 rounded-lg p-4 mb-4">
                             <p class="text-cyan-800 text-sm font-medium">ALTEPRO má zmapovaných 38 AI use cases napříč firmou. Web může být první úspěšný projekt, který otevře dveře ostatním.</p>
                         </div>
+                        <!-- Konkrétní use case: Event microsite -->
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                            <div class="flex items-start gap-3">
+                                <span class="text-xl">⚡</span>
+                                <div>
+                                    <h4 class="font-semibold text-altepro-dark text-sm mb-1">Příklad z praxe: Eventová microsite za pár minut</h4>
+                                    <p class="text-sm text-altepro-gray mb-2">Jedeme na akci se zákazníkem → potřebujeme stránku s organizačními info, programem, mapou, kontakty. Dnes: čekáme na externího dodavatele nebo pošleme PDF. S interním AI buildem: <strong class="text-altepro-dark">microsite na altepro.cz hotová v řádu minut</strong>, pošleme link.</p>
+                                    <p class="text-xs text-green-700">💡 Tato prezentační stránka je sama důkazem — vznikla kompletně pomocí AI nástrojů, včetně analýzy, obsahu i designu.</p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="grid sm:grid-cols-3 gap-3 text-xs">
                             <div class="bg-gray-50 rounded-lg p-3">
                                 <strong class="text-altepro-dark">Knowledge Management</strong>
@@ -708,6 +786,10 @@
                             <div class="bg-gray-50 rounded-lg p-3">
                                 <strong class="text-altepro-dark">Technický výzkum</strong>
                                 <p class="text-altepro-gray mt-1">Technology research, RFQ extraction, tool scouting</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3 sm:col-span-3 border border-green-200 bg-green-50">
+                                <strong class="text-altepro-dark">🌐 Microsites & Eventy</strong>
+                                <p class="text-altepro-gray mt-1">Eventové stránky, landing pages pro kampaně, organizační info pro zákazníky — na pár kliků, bez externího dodavatele</p>
                             </div>
                         </div>
                         <p class="text-xs text-altepro-gray mt-3">Kompletní seznam obsahuje 38 use cases s popisem, prioritou, odhadem úsilí a vlastníkem.</p>
@@ -740,13 +822,13 @@
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div class="bg-red-50 border border-red-100 rounded-xl p-5">
                         <p class="text-red-800 text-sm font-medium mb-2">Současný headline</p>
-                        <p class="text-red-900 font-semibold italic">"Projektujeme a dodáváme data centra..."</p>
-                        <p class="text-red-700 text-xs mt-2">Čistě popisný. Komoditní. Říká CO děláme, ne proč bychom měli být první volba.</p>
+                        <p class="text-red-900 font-semibold italic">"Jsme ALTEPRO — Spolehlivý partner pro Vaše ICT"</p>
+                        <p class="text-red-700 text-xs mt-2">Slušný základ (od 2014, certifikace, CTA). Ale „spolehlivý partner" může říct každý integrátor — chybí konkrétní diferenciátor v prvních sekundách. Sekce „V čem jsme jiní" je silná, ale je až na 4. scrollu.</p>
                     </div>
                     <div class="bg-red-50 border border-red-100 rounded-xl p-5">
                         <p class="text-red-800 text-sm font-medium mb-2">Styl komunikace</p>
                         <p class="text-red-900 font-semibold italic">"Nabízíme... Zajišťujeme... Poskytujeme..."</p>
-                        <p class="text-red-700 text-xs mt-2">Texty o nás, ne o zákazníkovi. Žádná segmentace, žádné konkrétní benefity, žádná čísla.</p>
+                        <p class="text-red-700 text-xs mt-2">Na podstránkách texty pořád o nás, ne o zákazníkovi. Stránka Řešení je katalog technologií bez business value. Žádná čísla, výsledky, konkrétní přínosy.</p>
                     </div>
                 </div>
             </div>
@@ -868,7 +950,7 @@
                             <div>Služby → Co děláme → Implementace</div>
                             <div>Řešení → Networking / IT / DC</div>
                             <div>Technologie → Portfolio</div>
-                            <div class="text-red-500">Reference → /word/ (strohé výčty)</div>
+                            <div class="text-red-500">Reference → loga + 1 věta, bez case studies</div>
                         </div>
                     </div>
 
