@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Redesign webu ALTEPRO — Interní podklad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        altepro: {
+                            dark: '#32373c',
+                            darker: '#1a1d20',
+                            green: '#4CAF50',
+                            'green-light': '#66BB6A',
+                            'green-dark': '#388E3C',
+                            gray: '#6b7280',
+                            'gray-light': '#f3f4f6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        html { font-family: 'Inter', system-ui, sans-serif; }
+        .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+        .fade-in { animation: fadeIn 0.6s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        details summary { cursor: pointer; }
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary .chevron { transform: rotate(180deg); }
+        .chevron { transition: transform 0.2s ease; }
+        .table-row:nth-child(even) { background-color: #f9fafb; }
+        @media print { .no-print { display: none; } }
+    </style>
+</head>
+<body class="bg-white text-altepro-dark antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-altepro-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">A</span>
+                    </div>
+                    <span class="font-semibold text-altepro-dark hidden sm:inline">ALTEPRO — Redesign webu</span>
+                </div>
+                <div class="hidden md:flex items-center gap-6 text-sm font-medium text-altepro-gray">
+                    <a href="#otazka" class="hover:text-altepro-dark transition-colors">Otázka</a>
+                    <a href="#perspektivy" class="hover:text-altepro-dark transition-colors">Perspektivy</a>
+                    <a href="#srovnani" class="hover:text-altepro-dark transition-colors">Srovnání</a>
+                    <a href="#otevrene-body" class="hover:text-altepro-dark transition-colors">Otevřené body</a>
+                    <a href="#podklady" class="hover:text-altepro-dark transition-colors">Podklady</a>
+                    <a href="#brand" class="hover:text-altepro-dark transition-colors">Brand</a>
+                </div>
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col gap-3 text-sm font-medium text-altepro-gray">
+                    <a href="#otazka" class="hover:text-altepro-dark">Otázka</a>
+                    <a href="#perspektivy" class="hover:text-altepro-dark">Perspektivy</a>
+                    <a href="#srovnani" class="hover:text-altepro-dark">Srovnání</a>
+                    <a href="#otevrene-body" class="hover:text-altepro-dark">Otevřené body</a>
+                    <a href="#podklady" class="hover:text-altepro-dark">Podklady</a>
+                    <a href="#brand" class="hover:text-altepro-dark">Brand</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="otazka" class="pt-32 pb-20 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-altepro-green/10 text-altepro-green-dark rounded-full text-sm font-medium mb-8">
+                <span class="w-2 h-2 bg-altepro-green rounded-full"></span>
+                Interní podklad — duben 2026
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-altepro-darker leading-tight mb-6">
+                Jak má vypadat<br>
+                <span class="text-altepro-green">nový web ALTEPRO?</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-altepro-gray max-w-2xl mx-auto leading-relaxed mb-4">
+                Od listopadu 2025 řešíme redesign webu. Vznikly dva přístupy.
+                Než se rozhodneme, potřebujeme se shodnout na tom, <strong class="text-altepro-dark">CO chceme</strong> — ne jen jak to uděláme.
+            </p>
+            <p class="text-base text-altepro-gray/80 max-w-xl mx-auto mb-10">
+                Tento dokument shrnuje perspektivy všech zúčastněných, srovnává varianty a otevírá otázky, na které musíme odpovědět společně.
+            </p>
+            <a href="#perspektivy" class="inline-flex items-center gap-2 px-6 py-3 bg-altepro-dark text-white rounded-lg font-medium hover:bg-altepro-darker transition-colors">
+                Číst dál
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- SITUACE -->
+    <section class="py-16 px-4 sm:px-6 bg-altepro-gray-light">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-sm font-semibold text-altepro-green uppercase tracking-wider mb-4">Kontext</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg">Přístup A — Externí dodávka</h3>
+                    </div>
+                    <p class="text-altepro-gray leading-relaxed text-sm">
+                        CTO našel přes LinkedIn člověka, který proaktivně připravil draft. Nabízí vlastní redakční systém, možnost úpravy textů pomocí AI. Cena <strong class="text-altepro-dark">~100 000 Kč</strong> — rozumná oproti předchozím nabídkám.
+                    </p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg">Přístup B — Interní AI build</h3>
+                    </div>
+                    <p class="text-altepro-gray leading-relaxed text-sm">
+                        Radim (analytická příprava, AI nástroje) a Vojta Šetina (programátorské zkušenosti, přístup k profíkům) chtějí web postavit interně pomocí AI. Příprava probíhá: analýza webu, mapa stránek, brand vize s marketingem a sales.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSPEKTIVY -->
+    <section id="perspektivy" class="py-20 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-altepro-darker mb-3">Tři perspektivy</h2>
+                <p class="text-altepro-gray max-w-xl mx-auto">Každá role má legitimní pohled. Rozhodnutí musí brát v úvahu všechny tři.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- CTO -->
+                <div class="card-hover bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <div class="bg-blue-600 p-6">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">CTO</h3>
+                        <p class="text-blue-100 text-sm mt-1">Profesionální dodávka za rozumnou cenu</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-sm text-altepro-gray">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Po měsících předražených nabídek konečně <strong class="text-altepro-dark">rozumná cena</strong> a člověk, který dodal draft bez čekání na zadání.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Vlastní redakční systém a „AI pro texty" — řeší editovatelnost.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Externě dodaný web = <strong class="text-altepro-dark">garantovaný profesionální výstup</strong>.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>ALTEPRO je ICT integrátor, ne webová agentura — outsourcovat necore je zdravý princip.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Proces běží, rozhodovací pravomoc je u CTO.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TSD -->
+                <div class="card-hover bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <div class="bg-altepro-green p-6">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">TSD — Radim + Vojta</h3>
+                        <p class="text-green-100 text-sm mt-1">AI projekt, který nás posune dál</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-sm text-altepro-gray">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-altepro-green mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Web je ideální <strong class="text-altepro-dark">první reálný AI projekt</strong> — jednoduchý scope, viditelný výstup, měřitelný přínos.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-altepro-green mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Příprava na úrovni: strategická analýza, mapa stránek, brand vize s marketingem a sales.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-altepro-green mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Vojta má programátorské zkušenosti + přístup k profesionálním konzultacím. Nejde o experiment jednoho člověka.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-altepro-green mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Dlouhodobá nezávislost: <strong class="text-altepro-dark">plná kontrola</strong> nad kódem, designem i obsahem. Microsites v řádu hodin.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-altepro-green mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Strategický precedent: 38 AI use cases čeká. Web je proof-of-concept.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Marketing -->
+                <div class="card-hover bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <div class="bg-amber-500 p-6">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Marketing</h3>
+                        <p class="text-amber-100 text-sm mt-1">Web, který funguje a který můžeme řídit</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-sm text-altepro-gray">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Hlavní bolest: <strong class="text-altepro-dark">nemožnost editovat web</strong> bez technické pomoci. To musí skončit.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Potřebujeme jasný brand messaging a USP — to je obsahová otázka, ne technická.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Web musí být <strong class="text-altepro-dark">obchodní nástroj</strong> — formuláře, CTA, lead generation.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Frustrace z prodlevy: od listopadu do dubna bez výsledku. Jakékoliv rozhodnutí je lepší než další čekání.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span>Nezáleží JAK je web postaven. Záleží na <strong class="text-altepro-dark">výsledku a udržitelnosti</strong>.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SROVNÁNÍ -->
+    <section id="srovnani" class="py-20 px-4 sm:px-6 bg-altepro-gray-light">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-altepro-darker mb-3">Srovnání přístupů</h2>
+                <p class="text-altepro-gray max-w-xl mx-auto">Sedm dimenzí, bez emocí. Fakta vedle sebe.</p>
+            </div>
+
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-left p-4 font-semibold text-altepro-dark w-1/5">Dimenze</th>
+                                <th class="text-left p-4 font-semibold text-blue-600 w-2/5">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                                        Externí dodávka (~100K Kč)
+                                    </div>
+                                </th>
+                                <th class="text-left p-4 font-semibold text-altepro-green w-2/5">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2 h-2 bg-altepro-green rounded-full"></span>
+                                        Interní AI build
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row border-b border-gray-100">
+                                <td class="p-4 font-medium text-altepro-dark">Kvalita výstupu</td>
+                                <td class="p-4 text-altepro-gray">Profesionální vizuál a UX — za předpokladu kvalitního briefu. Závisí na tom, co dodavatel dostane jako vstup.</td>
+                                <td class="p-4 text-altepro-gray">Iterativní, rychle upravitelný. Vojta má tech background. Riziko: méně web-specifické expertízy.</td>
+                            </tr>
+                            <tr class="table-row border-b border-gray-100">
+                                <td class="p-4 font-medium text-altepro-dark">Čas</td>
+                                <td class="p-4 text-altepro-gray">Týdny od potvrzení nabídky. Ale: proces běží od listopadu.</td>
+                                <td class="p-4 text-altepro-gray">Funkční prototyp v řádu dnů. Produkční verze realisticky 3–6 týdnů.</td>
+                            </tr>
+                            <tr class="table-row border-b border-gray-100">
+                                <td class="p-4 font-medium text-altepro-dark">Náklady</td>
+                                <td class="p-4 text-altepro-gray"><strong>~100K Kč</strong> jednorázově. Strukturální změny a rozšíření za příplatek.</td>
+                                <td class="p-4 text-altepro-gray"><strong>~2K Kč/měsíc</strong> tooling. Hlavní „náklad" je čas Radima a Vojty.</td>
+                            </tr>
+                            <tr class="table-row border-b border-gray-100">
+                                <td class="p-4 font-medium text-altepro-dark">Udržitelnost</td>
+                                <td class="p-4 text-altepro-gray">Vlastní redakční systém dodavatele — neznámý tech stack. Změny závislé na dodavateli.</td>
+                                <td class="p-4 text-altepro-gray">Kód plně pod kontrolou ALTEPRO. Marketing se učí editovat přes AI nástroje.</td>
+                            </tr>
+                            <tr class="table-row border-b border-gray-100">
+                                <td class="p-4 font-medium text-altepro-dark">Strategický dopad</td>
+                                <td class="p-4 text-altepro-gray">Nulový — firma dostane web, ale nic se nenaučí.</td>
+                                <td class="p-4 text-altepro-gray">Vysoký — proof-of-concept AI adopce, budování interních kompetencí.</td>
+                            </tr>
+                            <tr class="table-row border-b border-gray-100">
+                                <td class="p-4 font-medium text-altepro-dark">Kontrola</td>
+                                <td class="p-4 text-altepro-gray">Omezená. Design, kód a redakční systém závisí na dodavateli.</td>
+                                <td class="p-4 text-altepro-gray">Plná. Zdrojový kód, design, obsah, hosting — vše pod kontrolou firmy.</td>
+                            </tr>
+                            <tr class="table-row">
+                                <td class="p-4 font-medium text-altepro-dark">Rizika</td>
+                                <td class="p-4 text-altepro-gray">Kvalita závisí na briefu. Vendor lock-in. Neznámý redakční systém.</td>
+                                <td class="p-4 text-altepro-gray">Scope creep. Méně webové expertízy. Závislost na motivaci dvou lidí.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Paradox callout -->
+            <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-6">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-amber-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+                    <div>
+                        <h4 class="font-semibold text-amber-800 mb-1">K zamyšlení</h4>
+                        <p class="text-amber-700 text-sm leading-relaxed">
+                            Dodavatel z LinkedIn si s velkou pravděpodobností sám vytvořil svůj redakční systém pomocí AI nástrojů — tedy stejným přístupem, jaký navrhuje interní tým. Otázka zní: chceme za 100K Kč <strong>koupit výsledek</strong>, nebo za zlomek částky <strong>získat výsledek i kompetenci</strong>?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTEVŘENÉ BODY -->
+    <section id="otevrene-body" class="py-20 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-altepro-darker mb-3">Otevřené body</h2>
+                <p class="text-altepro-gray max-w-xl mx-auto">Na tyto otázky musíme odpovědět <strong class="text-altepro-dark">bez ohledu na zvolený přístup</strong>.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl border border-gray-200 p-5 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="text-red-600 font-bold text-sm">1</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-altepro-dark mb-1">Co přesně je ten „vlastní redakční systém"?</h4>
+                            <p class="text-altepro-gray text-sm">Jaký tech stack? Jak se edituje obsah? Kdo vlastní zdrojový kód a IP? Jaký je support model? Bez těchto informací nelze nabídku za 100K zodpovědně posoudit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 p-5 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="text-red-600 font-bold text-sm">2</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-altepro-dark mb-1">Co znamená „AI pro texty"?</h4>
+                            <p class="text-altepro-gray text-sm">Integrovaný nástroj? ChatGPT wrapper? Nebo jen doporučení „použijte ChatGPT"? Je to srovnatelné s tím, co nabízí interní přístup?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 p-5 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="text-amber-600 font-bold text-sm">3</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-altepro-dark mb-1">Kdo vytvoří obsah a brand messaging?</h4>
+                            <p class="text-altepro-gray text-sm">Tohle je nejtěžší část redesignu a je technologicky nezávislá. Ani exterňák ani AI to za firmu neudělají. Obsah musí vzniknout interně.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 p-5 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="text-amber-600 font-bold text-sm">4</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-altepro-dark mb-1">Je cíl „mít nový web" nebo „naučit se AI-native tvorbu"?</h4>
+                            <p class="text-altepro-gray text-sm">Pokud jde čistě o výsledek, obě varianty dovedou k cíli. Pokud jde i o budování kompetence, kalkulace se mění.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 p-5 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="text-altepro-gray font-bold text-sm">5</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-altepro-dark mb-1">Co s externím člověkem, který investoval čas?</h4>
+                            <p class="text-altepro-gray text-sm">Profesionální courtesy vyžaduje jasnou odpověď bez ohledu na zvolenou cestu.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 p-5 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="text-altepro-gray font-bold text-sm">6</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-altepro-dark mb-1">Kdo bude web udržovat za 12 měsíců?</h4>
+                            <p class="text-altepro-gray text-sm">Při interním přístupu: marketing + AI nástroje. Při externím: závisí na support modelu dodavatele.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 p-5 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="text-altepro-gray font-bold text-sm">7</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-altepro-dark mb-1">Jaká jsou akceptační kritéria?</h4>
+                            <p class="text-altepro-gray text-sm">Kdo rozhodne „tohle je dost dobré na produkci"? Bez jasných kritérií obě varianty riskují nekonečné ladění.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PODKLADY -->
+    <section id="podklady" class="py-20 px-4 sm:px-6 bg-altepro-gray-light">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-altepro-darker mb-3">Podklady a analýzy</h2>
+                <p class="text-altepro-gray max-w-xl mx-auto">Detailní materiály, které stojí za tímto dokumentem. Klikněte pro zobrazení.</p>
+            </div>
+
+            <div class="space-y-4">
+
+                <!-- Analýza současného webu -->
+                <details class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <summary class="p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-altepro-dark">Strategická analýza současného webu</h3>
+                                <p class="text-altepro-gray text-sm">Co je špatně s altepro.cz — audit obsahu, UX, brandu a SEO</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-altepro-gray chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 border-t border-gray-100 pt-4">
+                        <div class="bg-red-50 rounded-lg p-4 mb-4">
+                            <p class="text-red-800 text-sm font-medium">Hlavní zjištění: Web funguje jako pasivní „digitální vizitka" — zcela postrádá prvky moderního B2B prodejního nástroje.</p>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <h4 class="font-semibold text-altepro-dark mb-2">Obsah</h4>
+                                <ul class="space-y-1 text-altepro-gray">
+                                    <li>Statický, deskriptivní, trpí „produktovou slepotou"</li>
+                                    <li>Texty v 1. osobě: „Nabízíme", „Zajišťujeme"</li>
+                                    <li>Žádná segmentace podle vertikál</li>
+                                    <li>Chybí konkrétní benefity a čísla</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-altepro-dark mb-2">UX</h4>
+                                <ul class="space-y-1 text-altepro-gray">
+                                    <li>Chybí „Next Best Action" — slepé cesty</li>
+                                    <li>Vše končí obecným kontaktním formulářem</li>
+                                    <li>Vysoká míra opuštění na podstránkách</li>
+                                    <li>Uživatel se musí neustále vracet do menu</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-altepro-dark mb-2">Brand</h4>
+                                <ul class="space-y-1 text-altepro-gray">
+                                    <li>Vizuální identita je „safe", ale zaměnitelná</li>
+                                    <li>Headline je čistě popisný (komoditní)</li>
+                                    <li>Značka splývá s konkurencí</li>
+                                    <li>Rozhodování zákazníka primárně na základě ceny</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-altepro-dark mb-2">SEO</h4>
+                                <ul class="space-y-1 text-altepro-gray">
+                                    <li>„Řešení" a „Služby" se překrývají</li>
+                                    <li>Plochá URL struktura, žádné Topic Clusters</li>
+                                    <li>Špatná dohledatelnost long-tail dotazů</li>
+                                    <li>Zbytečné PPC výdaje</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <h4 class="font-semibold text-altepro-dark mb-2">Doporučení z auditu</h4>
+                            <div class="grid sm:grid-cols-5 gap-2 text-xs">
+                                <div class="bg-red-100 text-red-800 rounded-lg p-2 text-center"><strong>Homepage</strong><br>Přepsat</div>
+                                <div class="bg-blue-100 text-blue-800 rounded-lg p-2 text-center"><strong>Reference</strong><br>Expandovat na Case Study</div>
+                                <div class="bg-purple-100 text-purple-800 rounded-lg p-2 text-center"><strong>Konzultace</strong><br>Sloučit s produkty</div>
+                                <div class="bg-amber-100 text-amber-800 rounded-lg p-2 text-center"><strong>Blog</strong><br>Restart nebo skrýt</div>
+                                <div class="bg-green-100 text-green-800 rounded-lg p-2 text-center"><strong>O nás / Tým</strong><br>Zachovat</div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Deep research - jak se dělají weby -->
+                <details class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <summary class="p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-altepro-dark">Jak se dělají weby v 2026</h3>
+                                <p class="text-altepro-gray text-sm">Nezávislý výzkum: moderní webová architektura, trendy, ekonomika</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-altepro-gray chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 border-t border-gray-100 pt-4">
+                        <div class="bg-indigo-50 rounded-lg p-4 mb-4">
+                            <p class="text-indigo-800 text-sm font-medium">Hlavní zjištění: Pro technický tým je moderní static stack (Astro + headless CMS) ideální volba — extrémní výkon, minimální údržba, provozní náklady blízké nule.</p>
+                        </div>
+
+                        <h4 class="font-semibold text-altepro-dark mb-3">Čtyři hlavní přístupy k webům v 2026</h4>
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full text-xs">
+                                <thead>
+                                    <tr class="border-b border-gray-200">
+                                        <th class="text-left p-2 font-semibold">Kategorie</th>
+                                        <th class="text-left p-2 font-semibold">Stack</th>
+                                        <th class="text-left p-2 font-semibold text-green-600">Výhoda</th>
+                                        <th class="text-left p-2 font-semibold text-red-600">Nevýhoda</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-50">
+                                        <td class="p-2 font-medium">Klasické CMS</td>
+                                        <td class="p-2">WordPress + Rank Math</td>
+                                        <td class="p-2">Nejlepší pro AEO a složitý obsah</td>
+                                        <td class="p-2">Vysoká údržba, bezpečnostní rizika</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-50 bg-gray-50">
+                                        <td class="p-2 font-medium">Vizuální SaaS</td>
+                                        <td class="p-2">Webflow / Framer</td>
+                                        <td class="p-2">Rychlost, autonomie marketérů</td>
+                                        <td class="p-2">Vendor lock-in, vyšší licence</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-50">
+                                        <td class="p-2 font-medium">JAMstack / Static</td>
+                                        <td class="p-2">Astro + Headless CMS</td>
+                                        <td class="p-2">Extrémní výkon, bezpečnost, levný provoz</td>
+                                        <td class="p-2">Vyžaduje technický tým</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 font-medium">AI-Generated</td>
+                                        <td class="p-2">Lovable / Bolt / Claude Code</td>
+                                        <td class="p-2">Web hotový v řádu hodin</td>
+                                        <td class="p-2">Nutnost code review při úpravách</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="font-semibold text-altepro-dark mb-3">Ekonomika provozu (TCO)</h4>
+                        <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                            <div class="bg-red-50 rounded-lg p-3">
+                                <strong class="text-red-800">WordPress</strong>
+                                <p class="text-red-700 mt-1">Nízký start, ale ~$500–2000/rok na pluginy, bezpečnost, hosting. 20+ pluginů = „noční můra údržby".</p>
+                            </div>
+                            <div class="bg-amber-50 rounded-lg p-3">
+                                <strong class="text-amber-800">Webflow / Framer</strong>
+                                <p class="text-amber-700 mt-1">$20–50/měsíc předvídatelně. Ale: omezená přenositelnost kódu, vendor závislost.</p>
+                            </div>
+                            <div class="bg-green-50 rounded-lg p-3">
+                                <strong class="text-green-800">Astro / Static</strong>
+                                <p class="text-green-700 mt-1">Vyšší počáteční investice. Pak provozní náklady blízké nule (hosting zdarma). Dlouhá životnost.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                            <p class="text-yellow-800 text-xs"><strong>Trend 2026 — AEO:</strong> Optimalizace pro AI asistenty (ChatGPT, Perplexity) vyžaduje strukturovaná data (JSON-LD) a sémantické bloky textu. Weby bez Schema.org přestanou být viditelné v AI odpovědích.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Mapa současného webu -->
+                <details class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <summary class="p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-altepro-dark">Mapa současného webu</h3>
+                                <p class="text-altepro-gray text-sm">Struktura altepro.cz — co kde je a proč to nefunguje</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-altepro-gray chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 border-t border-gray-100 pt-4">
+                        <div class="bg-purple-50 rounded-lg p-4 mb-4">
+                            <p class="text-purple-800 text-sm font-medium">Hlavní problém: Kategorie „Řešení" a „Služby" se překrývají. URL struktura je plochá. Reference jsou pod /word/ (nestandardní).</p>
+                        </div>
+                        <div class="font-mono text-xs text-altepro-gray space-y-1 bg-gray-50 rounded-lg p-4">
+                            <div class="text-altepro-dark font-semibold">altepro.cz/</div>
+                            <div class="ml-4">├── <span class="text-blue-600">/sluzby/</span> Služby</div>
+                            <div class="ml-8">├── /co-delame/ — Co děláme</div>
+                            <div class="ml-8">├── /implementace-it-reseni/</div>
+                            <div class="ml-8">└── /konzultace-it-reseni/</div>
+                            <div class="ml-4">├── <span class="text-blue-600">/reseni/</span> Řešení <span class="text-red-500 text-xs">(překryv se Službami)</span></div>
+                            <div class="ml-8">├── /networking/</div>
+                            <div class="ml-8">├── /it/ — Compute & Storage</div>
+                            <div class="ml-8">└── /datova-centra/</div>
+                            <div class="ml-4">├── <span class="text-blue-600">/technologie/</span> Technologie</div>
+                            <div class="ml-4">├── <span class="text-blue-600">/o-nas/</span> O nás <span class="text-green-500 text-xs">(nejsilnější prvek)</span></div>
+                            <div class="ml-8">├── /tym/</div>
+                            <div class="ml-8">└── /kontakt/</div>
+                            <div class="ml-4">├── <span class="text-blue-600">/kompetencni-centrum-huatech/</span></div>
+                            <div class="ml-4">├── <span class="text-blue-600">/word/</span> Reference <span class="text-red-500 text-xs">(nestandardní URL)</span></div>
+                            <div class="ml-4">├── <span class="text-blue-600">/stitek/</span> Blog / Štítky</div>
+                            <div class="ml-4">└── <span class="text-blue-600">/en/</span> Anglická verze</div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Srovnávací analýza -->
+                <details class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <summary class="p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-altepro-dark">Kompletní srovnávací analýza přístupů</h3>
+                                <p class="text-altepro-gray text-sm">Detailní dokument s kritickým rozborem obou variant</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-altepro-gray chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 border-t border-gray-100 pt-4">
+                        <div class="bg-green-50 rounded-lg p-4 mb-4">
+                            <p class="text-green-800 text-sm font-medium">Hlavní zjištění: Bez odpovědí na klíčové otázky o externí nabídce je rozhodnutí předčasné. Obě varianty mají legitimní silné stránky i rizika.</p>
+                        </div>
+                        <div class="text-sm text-altepro-gray space-y-3">
+                            <p><strong class="text-altepro-dark">Dokument pokrývá:</strong></p>
+                            <ul class="space-y-1 ml-4 list-disc">
+                                <li>Paradox externího přístupu — dodavatel sám pravděpodobně vibecodnul svůj systém</li>
+                                <li>6 konkrétních otázek, které musíme znát o externí nabídce</li>
+                                <li>Technologický kontext z nezávislého výzkumu (2025–2026)</li>
+                                <li>Férové pojmenování rizik interního přístupu</li>
+                                <li>Silné stránky interního přístupu</li>
+                                <li>Doporučení rámované jako strategická otázka</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- AI use cases -->
+                <details class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <summary class="p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-altepro-dark">AI use cases ALTEPRO — proč je web důležitý</h3>
+                                <p class="text-altepro-gray text-sm">38 identifikovaných AI use cases. Web jako proof-of-concept.</p>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-altepro-gray chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="px-6 pb-6 border-t border-gray-100 pt-4">
+                        <div class="bg-cyan-50 rounded-lg p-4 mb-4">
+                            <p class="text-cyan-800 text-sm font-medium">ALTEPRO má zmapovaných 38 AI use cases napříč firmou. Web může být první úspěšný projekt, který otevře dveře ostatním.</p>
+                        </div>
+                        <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                            <div class="bg-gray-50 rounded-lg p-3">
+                                <strong class="text-altepro-dark">Knowledge Management</strong>
+                                <p class="text-altepro-gray mt-1">AI knowledge base, KB article generator, troubleshooting platforma</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3">
+                                <strong class="text-altepro-dark">Podpora & Provoz</strong>
+                                <p class="text-altepro-gray mt-1">Ticket triage, L1 helper, reporting, time tracking analýza</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3">
+                                <strong class="text-altepro-dark">Sales & Obchod</strong>
+                                <p class="text-altepro-gray mt-1">Sales meeting assistant, komunikace, nabídky, competitive research</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3">
+                                <strong class="text-altepro-dark">Projekty</strong>
+                                <p class="text-altepro-gray mt-1">Project assistant, risk detection, lessons learned, capacity</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3">
+                                <strong class="text-altepro-dark">Obsah & Komunikace</strong>
+                                <p class="text-altepro-gray mt-1">Content creation, překlady, formální texty, grafika</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-3">
+                                <strong class="text-altepro-dark">Technický výzkum</strong>
+                                <p class="text-altepro-gray mt-1">Technology research, RFQ extraction, tool scouting</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-altepro-gray mt-3">Kompletní seznam obsahuje 38 use cases s popisem, prioritou, odhadem úsilí a vlastníkem.</p>
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND & HODNOTY -->
+    <section id="brand" class="py-20 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-altepro-darker mb-3">Brand, hodnoty a koncepce</h2>
+                <p class="text-altepro-gray max-w-2xl mx-auto">
+                    Bez jasného brandu a messagingu bude jakýkoliv web průměrný — bez ohledu na to, kdo ho postaví.
+                    Tato sekce otevírá otázky, na které musíme odpovědět <strong class="text-altepro-dark">společně</strong>.
+                </p>
+            </div>
+
+            <!-- Co dnes říkáme -->
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-altepro-darker mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </span>
+                    Co dnes říkáme — a co je špatně
+                </h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-red-50 border border-red-100 rounded-xl p-5">
+                        <p class="text-red-800 text-sm font-medium mb-2">Současný headline</p>
+                        <p class="text-red-900 font-semibold italic">"Projektujeme a dodáváme data centra..."</p>
+                        <p class="text-red-700 text-xs mt-2">Čistě popisný. Komoditní. Říká CO děláme, ne proč bychom měli být první volba.</p>
+                    </div>
+                    <div class="bg-red-50 border border-red-100 rounded-xl p-5">
+                        <p class="text-red-800 text-sm font-medium mb-2">Styl komunikace</p>
+                        <p class="text-red-900 font-semibold italic">"Nabízíme... Zajišťujeme... Poskytujeme..."</p>
+                        <p class="text-red-700 text-xs mt-2">Texty o nás, ne o zákazníkovi. Žádná segmentace, žádné konkrétní benefity, žádná čísla.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transformace messagingu -->
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-altepro-darker mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                    </span>
+                    Jak by to mohlo vypadat
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+                        <div class="bg-red-100 text-red-600 px-3 py-1 rounded-lg text-xs font-medium shrink-0 w-20 text-center">Dnes</div>
+                        <p class="text-altepro-gray text-sm line-through">"Dodáváme síťová řešení"</p>
+                        <svg class="w-5 h-5 text-altepro-gray shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <div class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs font-medium shrink-0 w-20 text-center">Nově</div>
+                        <p class="text-altepro-dark text-sm font-medium">"Vaše síť poběží bez výpadků"</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+                        <div class="bg-red-100 text-red-600 px-3 py-1 rounded-lg text-xs font-medium shrink-0 w-20 text-center">Dnes</div>
+                        <p class="text-altepro-gray text-sm line-through">"Projektujeme datová centra"</p>
+                        <svg class="w-5 h-5 text-altepro-gray shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <div class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs font-medium shrink-0 w-20 text-center">Nově</div>
+                        <p class="text-altepro-dark text-sm font-medium">"Datové centrum na míru, které roste s vámi"</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+                        <div class="bg-red-100 text-red-600 px-3 py-1 rounded-lg text-xs font-medium shrink-0 w-20 text-center">Dnes</div>
+                        <p class="text-altepro-gray text-sm line-through">"Zajišťujeme bezpečnost IT"</p>
+                        <svg class="w-5 h-5 text-altepro-gray shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <div class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs font-medium shrink-0 w-20 text-center">Nově</div>
+                        <p class="text-altepro-dark text-sm font-medium">"Spíte klidně. O bezpečnost se staráme my."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Otázky k brand identitě -->
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-altepro-darker mb-6 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </span>
+                    Otázky, které musíme zodpovědět jako firma
+                </h3>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 card-hover">
+                        <div class="text-2xl mb-3 font-bold text-altepro-green/30">01</div>
+                        <h4 class="font-semibold text-altepro-dark mb-2">Kdo jsme?</h4>
+                        <p class="text-altepro-gray text-sm mb-3">Systémový integrátor? Technologický partner? Konzultant? Expert na datová centra?</p>
+                        <p class="text-altepro-dark text-sm font-medium">V čem jsme JINÍ než konkurence?</p>
+                        <p class="text-altepro-gray text-xs mt-1">(Ne lepší — jiní. Co zákazník nedostane jinde?)</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 card-hover">
+                        <div class="text-2xl mb-3 font-bold text-altepro-green/30">02</div>
+                        <h4 class="font-semibold text-altepro-dark mb-2">Pro koho děláme?</h4>
+                        <p class="text-altepro-gray text-sm mb-3">Enterprise? Střední firmy? Státní správa? Máme vertikály, kde jsme silní?</p>
+                        <p class="text-altepro-dark text-sm font-medium">Kdo je typický člověk, který navštíví web?</p>
+                        <p class="text-altepro-gray text-xs mt-1">(CTO zákazníka? IT manažer? Nákupčí?)</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 card-hover">
+                        <div class="text-2xl mb-3 font-bold text-altepro-green/30">03</div>
+                        <h4 class="font-semibold text-altepro-dark mb-2">Co zákazník získá?</h4>
+                        <p class="text-altepro-gray text-sm mb-3">Dnes říkáme CO děláme. Měli bychom říkat CO TÍM ZÁKAZNÍK ZÍSKÁ.</p>
+                        <p class="text-altepro-dark text-sm font-medium">Jaké konkrétní výsledky můžeme slíbit?</p>
+                        <p class="text-altepro-gray text-xs mt-1">(Čísla, úspory, SLA, rychlost, reference)</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 card-hover">
+                        <div class="text-2xl mb-3 font-bold text-altepro-green/30">04</div>
+                        <h4 class="font-semibold text-altepro-dark mb-2">Jaký je náš USP?</h4>
+                        <p class="text-altepro-gray text-sm">Kandidáti na USP z toho, co víme:</p>
+                        <ul class="text-altepro-gray text-xs mt-2 space-y-1 list-disc ml-4">
+                            <li>Demo prostředí / kompetenční centrum (dnes jediný USP na webu)</li>
+                            <li>Vlastní projekční tým (ne jen přeprodej)</li>
+                            <li>Servisní podpora (jaká? SLA?)</li>
+                            <li>Reference a track record</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 card-hover">
+                        <div class="text-2xl mb-3 font-bold text-altepro-green/30">05</div>
+                        <h4 class="font-semibold text-altepro-dark mb-2">Jaký tón komunikace?</h4>
+                        <p class="text-altepro-gray text-sm mb-3">Technický expert vs. přístupný partner? Formální vs. přímý?</p>
+                        <p class="text-altepro-dark text-sm font-medium">Jak moc chceme ukazovat lidi?</p>
+                        <p class="text-altepro-gray text-xs mt-1">(Fotky týmu jsou dnes nejsilnější prvek důvěry na webu)</p>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 card-hover">
+                        <div class="text-2xl mb-3 font-bold text-altepro-green/30">06</div>
+                        <h4 class="font-semibold text-altepro-dark mb-2">Co má web DĚLAT?</h4>
+                        <p class="text-altepro-gray text-sm mb-2">Vizitka (informovat) nebo prodejní nástroj (generovat leady)?</p>
+                        <ul class="text-altepro-gray text-xs space-y-1 list-disc ml-4">
+                            <li>Má kvalifikovat leady? (velikost firmy, typ potřeby)</li>
+                            <li>Chceme content marketing? (blog, whitepapers, case studies)</li>
+                            <li>Chceme microsites pro eventy a kampaně?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navrhovaná informační architektura -->
+            <div>
+                <h3 class="text-xl font-bold text-altepro-darker mb-6 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                    </span>
+                    Návrh: Nová informační architektura
+                </h3>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-red-50 border border-red-100 rounded-xl p-6">
+                        <h4 class="font-semibold text-red-800 mb-3">Současná struktura</h4>
+                        <p class="text-red-700 text-xs mb-3">Orientovaná na produkt — co prodáváme</p>
+                        <div class="font-mono text-xs text-red-800 space-y-1">
+                            <div>Služby → Co děláme → Implementace</div>
+                            <div>Řešení → Networking / IT / DC</div>
+                            <div>Technologie → Portfolio</div>
+                            <div class="text-red-500">Reference → /word/ (strohé výčty)</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-50 border border-green-100 rounded-xl p-6">
+                        <h4 class="font-semibold text-green-800 mb-3">Navrhovaná struktura</h4>
+                        <p class="text-green-700 text-xs mb-3">Orientovaná na zákazníka — co tím získá</p>
+                        <div class="font-mono text-xs text-green-800 space-y-1">
+                            <div>Co řešíme → Problémy zákazníků</div>
+                            <div>Jak pracujeme → Proces spolupráce</div>
+                            <div>Reference → Case studies (problém → řešení → výsledek)</div>
+                            <div class="text-green-600">O nás → Tým, hodnoty, demo centrum</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / ZÁVĚR -->
+    <section class="py-20 px-4 sm:px-6 bg-altepro-darker text-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Co dál?</h2>
+            <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                Tento dokument není odpověď — je to základ pro společné rozhodnutí.
+                Potřebujeme se sejít, projít otevřené body a rozhodnout se.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-4 text-left mb-10">
+                <div class="bg-white/10 rounded-xl p-5">
+                    <div class="text-altepro-green font-bold text-lg mb-1">1.</div>
+                    <p class="text-sm text-gray-300">Zjistit odpovědi na otázky o externí nabídce</p>
+                </div>
+                <div class="bg-white/10 rounded-xl p-5">
+                    <div class="text-altepro-green font-bold text-lg mb-1">2.</div>
+                    <p class="text-sm text-gray-300">Krátká schůzka: CTO + TSD + Marketing</p>
+                </div>
+                <div class="bg-white/10 rounded-xl p-5">
+                    <div class="text-altepro-green font-bold text-lg mb-1">3.</div>
+                    <p class="text-sm text-gray-300">Začít na obsahu a brand messagingu — to je bottleneck obou variant</p>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8">
+                <p class="text-gray-400 text-sm">
+                    Připravili Radim Roska a Vojta Šetina — duben 2026
+                </p>
+                <p class="text-gray-500 text-xs mt-2">
+                    Tato stránka byla vytvořena pomocí AI nástrojů jako ukázka toho, co je dnes možné.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile menu close on link click -->
+    <script>
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
